@@ -1,0 +1,293 @@
+/* Motion studies adapted from the user-supplied Codrops examples.
+   Sources and retained MIT notices: third_party/animation-sources.md. */
+
+.hero-title-motion {
+  position: relative;
+  overflow: clip;
+}
+
+.hero-line-mask {
+  overflow: hidden;
+  padding-bottom: .2em;
+  margin-bottom: -.2em;
+}
+
+.hero-line-drift,
+.hero-line-enter {
+  display: block;
+  transform-origin: 0 100%;
+}
+
+.hero-title-motion .hero-flower {
+  transform-origin: 50% 50%;
+}
+
+/* Vertical letter tracks preserve a single accessible text label. */
+.rolling-text {
+  display: inline-block;
+  line-height: 1.18;
+}
+
+.rolling-characters {
+  display: inline-flex;
+  white-space: pre;
+}
+
+.rolling-character {
+  display: inline-block;
+  height: 1.18em;
+  overflow: hidden;
+}
+
+.rolling-track {
+  display: flex;
+  flex-direction: column;
+  transition: transform .65s cubic-bezier(.22, 1, .36, 1);
+  transition-delay: calc(var(--character-index) * 14ms);
+}
+
+.rolling-track > span {
+  display: block;
+  height: 1.18em;
+  line-height: 1.18;
+}
+
+:is(a, button):is(:hover, :focus-visible) .rolling-track {
+  transform: translateY(-50%);
+}
+
+.menu-overlay {
+  background: #171916;
+  color: var(--bg);
+  overflow-x: hidden;
+}
+
+.menu-overlay .nav-number,
+.menu-overlay .overlay-bottom > span:last-child {
+  color: #b5b7af;
+}
+
+.menu-overlay .overlay-bottom {
+  border-color: #454740;
+}
+
+.menu-overlay :focus-visible {
+  outline-color: var(--bg);
+}
+
+.large-nav > div {
+  padding-block: 2px;
+}
+
+.large-nav .rolling-text {
+  letter-spacing: inherit;
+}
+
+.case-stage {
+  min-width: 0;
+  position: relative;
+}
+
+.case-scroll-card {
+  background: var(--bg);
+  transform-origin: 50% 0;
+}
+
+.case-stage-enabled {
+  min-height: calc(110svh + 64px);
+  perspective: 1600px;
+}
+
+.case-stage-enabled .case-scroll-card {
+  position: sticky;
+  top: 112px;
+  padding-bottom: 24px;
+  backface-visibility: hidden;
+}
+
+.case-stage-enabled .case-preview > .project-art {
+  aspect-ratio: auto;
+  height: clamp(320px, 64svh, 800px);
+}
+
+.case-stage-enabled:focus-within {
+  z-index: 2;
+}
+
+.case-stage-enabled:focus-within .case-scroll-card {
+  transform: none !important;
+}
+
+.statement-word {
+  display: inline;
+}
+
+.scroll-statement {
+  position: relative;
+}
+
+/* A quiet pill of imagery opens into a full architectural composition. */
+.expansion-section {
+  margin-bottom: 112px;
+}
+
+.expansion-stage {
+  position: relative;
+  padding: 24px var(--gutter) 0;
+}
+
+.expansion-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: var(--text-caption);
+}
+
+.expansion-composition {
+  position: relative;
+  margin-top: 40px;
+}
+
+.expansion-heading {
+  font-size: clamp(3rem, 10vw, 11rem);
+  line-height: 1.04;
+  letter-spacing: -.065em;
+}
+
+.expansion-line {
+  display: block;
+}
+
+.expansion-line-bottom {
+  text-align: right;
+}
+
+.expansion-image-mask {
+  height: min(60svh, 680px);
+  position: relative;
+  overflow: hidden;
+  margin-top: 32px;
+  background: #dedbd5;
+}
+
+.expansion-image {
+  position: absolute;
+  inset: 0;
+}
+
+.expansion-image img {
+  object-position: 50% 56%;
+}
+
+.expansion-image-mask::after {
+  content: "";
+  position: absolute;
+  inset: 55% 0 0;
+  background: linear-gradient(transparent, #11111170);
+  pointer-events: none;
+}
+
+.expansion-caption {
+  position: absolute;
+  z-index: 1;
+  bottom: 32px;
+  left: 32px;
+  right: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  color: #fff;
+  font-size: var(--text-lead);
+  letter-spacing: -.025em;
+}
+
+.expansion-caption > span {
+  font-size: var(--text-caption);
+  letter-spacing: 0;
+}
+
+.expansion-enabled {
+  height: 185svh;
+}
+
+.expansion-enabled .expansion-stage {
+  height: 100svh;
+  position: sticky;
+  top: 0;
+  padding: 0;
+}
+
+.expansion-enabled .expansion-meta {
+  position: absolute;
+  inset: 112px var(--gutter) auto;
+  z-index: 3;
+  border: 0;
+  padding: 0;
+  color: var(--fg);
+  text-shadow: 0 1px 8px #f5f5f3b0;
+}
+
+.expansion-enabled .expansion-composition {
+  height: 100%;
+  margin: 0;
+  overflow: clip;
+}
+
+.expansion-enabled .expansion-heading {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  font-size: clamp(5rem, 11vw, 12rem);
+  pointer-events: none;
+}
+
+.expansion-enabled .expansion-line {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+}
+
+.expansion-enabled .expansion-line-top {
+  top: 18%;
+}
+
+.expansion-enabled .expansion-line-bottom {
+  bottom: 12%;
+}
+
+.expansion-enabled .expansion-image-mask {
+  height: 100%;
+  margin: 0;
+}
+
+.expansion-enabled .expansion-caption {
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 48px;
+}
+
+@media (max-width: 899px) {
+  .case-stage-enabled { min-height: 0; perspective: none; }
+  .case-stage-enabled .case-scroll-card { position: static; padding: 0; transform: none !important; }
+  .case-stage-enabled .case-preview > .project-art { height: auto; aspect-ratio: 1.3; }
+  .expansion-section { margin-bottom: 72px; }
+  .expansion-meta { font-size: .6875rem; }
+  .expansion-meta > span:last-child { max-width: 140px; text-align: right; }
+  .expansion-composition { margin-top: 32px; }
+  .expansion-heading { font-size: 11vw; }
+  .expansion-image-mask { height: 48svh; margin-top: 24px; }
+  .expansion-caption { inset: auto 20px 24px; flex-direction: column; gap: 8px; }
+  .expansion-caption > span { font-size: .625rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-line-enter, .hero-line-drift { transform: none !important; }
+  .rolling-track { transition: none; }
+  :is(a, button):is(:hover, :focus-visible) .rolling-track { transform: none; }
+  .statement-word { color: var(--fg) !important; }
+  .case-stage { min-height: 0; perspective: none; }
+  .case-scroll-card { position: static !important; transform: none !important; }
+}
